@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c16ydjlk6ycxp"]
+
+[ext_resource type="Texture2D" uid="uid://bdr2gq65scjnv" path="res://assets/materials/rusted-metal_albedo.png" id="1"]
+
+[resource]
+albedo_texture = ExtResource("1")
+metallic = 1.0
+roughness = 0.82

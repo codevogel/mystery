@@ -1,0 +1,13 @@
+[gd_scene load_steps=5 format=3 uid="uid://sjqbfgo8m0f"]
+
+[ext_resource type="PackedScene" uid="uid://bca6gftfiadg6" path="res://assets/tree-stump.fbx" id="1_43d6s"]
+[ext_resource type="Material" uid="uid://bnn5ecdc0psue" path="res://assets/materials/wood.tres" id="2_f1oco"]
+[ext_resource type="Material" uid="uid://cs2olpvv7pexp" path="res://assets/materials/copper.tres" id="3_0j3vr"]
+[ext_resource type="Material" uid="uid://c16ydjlk6ycxp" path="res://assets/materials/rusted-metal.tres" id="3_miod0"]
+
+[node name="tree-stump" instance=ExtResource("1_43d6s")]
+
+[node name="Tree_Trunk" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_f1oco")
+surface_material_override/1 = ExtResource("3_miod0")
+surface_material_override/2 = ExtResource("3_0j3vr")

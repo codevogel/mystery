@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkepy1gr83fwg"]
+
+[ext_resource type="PackedScene" uid="uid://sjqbfgo8m0f" path="res://assets/tree_stump.tscn" id="1_rvtem"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_rytlu"]
+
+[sub_resource type="Sky" id="Sky_36u7s"]
+sky_material = SubResource("PanoramaSkyMaterial_rytlu")
+
+[sub_resource type="Environment" id="Environment_y3ivl"]
+background_mode = 1
+background_color = Color(0.443147, 0.488123, 0.465945, 1)
+sky = SubResource("Sky_36u7s")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="tree-stump" parent="." instance=ExtResource("1_rvtem")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.339581, 2.38419e-07, -2.90708)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.26601, 0, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_y3ivl")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.853432, 0.0192648, 0.520847, -0.521177, 0.0213792, 0.853181, 0.0053011, -0.999586, 0.0282861, 0, 0, 0)
+light_energy = 0.859
+light_indirect_energy = 0.0

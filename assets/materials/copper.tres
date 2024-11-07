@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://cs2olpvv7pexp"]
+
+[ext_resource type="Texture2D" uid="uid://nnxamybrapg0" path="res://assets/materials/copper_albedo.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://bt7qmebhr706m" path="res://assets/materials/copper_normal.png" id="3"]
+
+[resource]
+albedo_texture = ExtResource("1")
+metallic = 1.0
+roughness = 0.67
+normal_enabled = true
+normal_texture = ExtResource("3")

@@ -1,0 +1,452 @@
+{
+	"connections": [
+		{
+			"from": "image",
+			"from_port": 0,
+			"to": "blend2",
+			"to_port": 0
+		},
+		{
+			"from": "uniform",
+			"from_port": 0,
+			"to": "blend2",
+			"to_port": 1
+		},
+		{
+			"from": "normal_map2",
+			"from_port": 0,
+			"to": "Material",
+			"to_port": 4
+		},
+		{
+			"from": "image",
+			"from_port": 0,
+			"to": "normal_map2",
+			"to_port": 0
+		},
+		{
+			"from": "blend2",
+			"from_port": 0,
+			"to": "Material",
+			"to_port": 0
+		}
+	],
+	"label": "Graph",
+	"longdesc": "",
+	"name": "@@352",
+	"node_position": {
+		"x": 0,
+		"y": 0
+	},
+	"nodes": [
+		{
+			"export_last_target": "Godot/Godot 4 Standard",
+			"export_paths": {
+				"Godot/Godot 4 Standard": "/home/codevogel/mystery/assets/materials/copper"
+			},
+			"name": "Material",
+			"node_position": {
+				"x": 618.388916,
+				"y": 106.888893
+			},
+			"parameters": {
+				"albedo_color": {
+					"a": 1,
+					"b": 1,
+					"g": 1,
+					"r": 1,
+					"type": "Color"
+				},
+				"ao": 1,
+				"depth_scale": 0.5,
+				"emission_energy": 1,
+				"flags_transparent": true,
+				"metallic": 1,
+				"normal": 1,
+				"roughness": 0.67,
+				"size": 11,
+				"sss": 1
+			},
+			"seed_int": 0,
+			"type": "material"
+		},
+		{
+			"name": "image",
+			"node_position": {
+				"x": -271.073608,
+				"y": 65.999985
+			},
+			"parameters": {
+				"clamp": false,
+				"fix_ar": false,
+				"image": "/home/codevogel/mystery/assets/thirdparty/screaming-brain-studios/Metal/Metal_18-128x128.png"
+			},
+			"seed_int": 0,
+			"type": "image"
+		},
+		{
+			"generic_size": 1,
+			"name": "blend2",
+			"node_position": {
+				"x": 53.926392,
+				"y": 231
+			},
+			"parameters": {
+				"amount1": 0.5,
+				"blend_type1": 0
+			},
+			"seed_int": 0,
+			"type": "blend2"
+		},
+		{
+			"name": "uniform",
+			"node_position": {
+				"x": -117.073608,
+				"y": 363
+			},
+			"parameters": {
+				"color": {
+					"a": 1,
+					"b": 0.363281,
+					"g": 0.64682,
+					"r": 1,
+					"type": "Color"
+				}
+			},
+			"seed_int": 0,
+			"type": "uniform"
+		},
+		{
+			"connections": [
+				{
+					"from": "gen_inputs",
+					"from_port": 0,
+					"to": "switch",
+					"to_port": 0
+				},
+				{
+					"from": "edge_detect_1",
+					"from_port": 0,
+					"to": "gen_outputs",
+					"to_port": 0
+				},
+				{
+					"from": "switch",
+					"from_port": 0,
+					"to": "edge_detect_1",
+					"to_port": 0
+				},
+				{
+					"from": "gen_inputs",
+					"from_port": 0,
+					"to": "pack_2x32_to_4x16_3",
+					"to_port": 0
+				},
+				{
+					"from": "pack_2x32_to_4x16_3",
+					"from_port": 0,
+					"to": "buffer",
+					"to_port": 0
+				},
+				{
+					"from": "buffer",
+					"from_port": 0,
+					"to": "pack_4x16_to_2x32_3",
+					"to_port": 0
+				},
+				{
+					"from": "pack_4x16_to_2x32_3",
+					"from_port": 0,
+					"to": "switch",
+					"to_port": 1
+				}
+			],
+			"label": "Normal Map",
+			"longdesc": "Generates a normal map from a height map",
+			"name": "normal_map2",
+			"node_position": {
+				"x": 275.467163,
+				"y": 371.460449
+			},
+			"nodes": [
+				{
+					"name": "buffer",
+					"node_position": {
+						"x": -695.663818,
+						"y": -44.39386
+					},
+					"parameters": {
+						"lod": 0,
+						"size": 7
+					},
+					"seed": -32011,
+					"type": "buffer"
+				},
+				{
+					"name": "gen_parameters",
+					"node_position": {
+						"x": -802.910156,
+						"y": -293.916687
+					},
+					"parameters": {
+						"buffer": 1,
+						"param2": 0,
+						"size": 7,
+						"strength": 0.43
+					},
+					"seed": 56582,
+					"type": "remote",
+					"widgets": [
+						{
+							"label": "",
+							"linked_widgets": [
+								{
+									"node": "edge_detect_1",
+									"widget": "algo"
+								}
+							],
+							"longdesc": "The algorithm used to generate the normal map",
+							"name": "param2",
+							"shortdesc": "Algorithm",
+							"type": "linked_control"
+						},
+						{
+							"label": "",
+							"linked_widgets": [
+								{
+									"node": "buffer",
+									"widget": "size"
+								},
+								{
+									"node": "edge_detect_1",
+									"widget": "size"
+								}
+							],
+							"longdesc": "The resolution of the generated normal map",
+							"name": "size",
+							"shortdesc": "Resolution",
+							"type": "linked_control"
+						},
+						{
+							"label": "",
+							"linked_widgets": [
+								{
+									"node": "edge_detect_1",
+									"widget": "amount"
+								}
+							],
+							"longdesc": "The strength of the normal map filter",
+							"name": "strength",
+							"shortdesc": "Strength",
+							"type": "linked_control"
+						},
+						{
+							"configurations": {
+								"False": [
+									{
+										"node": "switch",
+										"value": 0,
+										"widget": "source"
+									}
+								],
+								"True": [
+									{
+										"node": "switch",
+										"value": 1,
+										"widget": "source"
+									}
+								]
+							},
+							"label": "Buffer",
+							"linked_widgets": [
+								{
+									"node": "switch",
+									"widget": "source"
+								}
+							],
+							"longdesc": "When set, a buffer is used to sample the input before the normal map filter",
+							"name": "buffer",
+							"shortdesc": "Buffer",
+							"type": "config_control"
+						}
+					]
+				},
+				{
+					"name": "gen_outputs",
+					"node_position": {
+						"x": -445.663818,
+						"y": 75.047363
+					},
+					"parameters": {
+
+					},
+					"ports": [
+						{
+							"group_size": 0,
+							"longdesc": "Shows the generated normal map",
+							"name": "Normal",
+							"shortdesc": "Output",
+							"type": "rgb"
+						}
+					],
+					"seed": -6314,
+					"type": "ios"
+				},
+				{
+					"name": "gen_inputs",
+					"node_position": {
+						"x": -1094.910156,
+						"y": 74.047363
+					},
+					"parameters": {
+
+					},
+					"ports": [
+						{
+							"group_size": 0,
+							"longdesc": "The input height map",
+							"name": "Bump",
+							"shortdesc": "Input",
+							"type": "f"
+						}
+					],
+					"seed": 12483,
+					"seed_locked": true,
+					"type": "ios"
+				},
+				{
+					"name": "switch",
+					"node_position": {
+						"x": -675.5,
+						"y": 110.297363
+					},
+					"parameters": {
+						"choices": 2,
+						"outputs": 1,
+						"source": 1
+					},
+					"seed": -53264,
+					"type": "switch"
+				},
+				{
+					"name": "edge_detect_1",
+					"node_position": {
+						"x": -674.092529,
+						"y": 211.868774
+					},
+					"parameters": {
+						"algo": 0,
+						"amount": 0.43,
+						"size": 7
+					},
+					"seed": -11547,
+					"shader_model": {
+						"code": "",
+						"global": "",
+						"inputs": [
+							{
+								"default": "0.0",
+								"function": true,
+								"label": "",
+								"name": "in",
+								"type": "f"
+							}
+						],
+						"instance": "vec3 nm_$name(vec2 uv, float amount, float size) {\n\tvec3 e = vec3(1.0/size, -1.0/size, 0);\n\tvec2 rv;\n\tif ($algo == 0) {\n\t\trv = vec2(1.0, -1.0)*$in(uv+e.xy);\n\t\trv += vec2(-1.0, 1.0)*$in(uv-e.xy);\n\t\trv += vec2(1.0, 1.0)*$in(uv+e.xx);\n\t\trv += vec2(-1.0, -1.0)*$in(uv-e.xx);\n\t\trv += vec2(2.0, 0.0)*$in(uv+e.xz);\n\t\trv += vec2(-2.0, 0.0)*$in(uv-e.xz);\n\t\trv += vec2(0.0, 2.0)*$in(uv+e.zx);\n\t\trv += vec2(0.0, -2.0)*$in(uv-e.zx);\n\t\trv *= size*amount/128.0;\n\t} else if ($algo == 1) {\n\t\trv = vec2(3.0, -3.0)*$in(uv+e.xy);\n\t\trv += vec2(-3.0, 3.0)*$in(uv-e.xy);\n\t\trv += vec2(3.0, 3.0)*$in(uv+e.xx);\n\t\trv += vec2(-3.0, -3.0)*$in(uv-e.xx);\n\t\trv += vec2(10.0, 0.0)*$in(uv+e.xz);\n\t\trv += vec2(-10.0, 0.0)*$in(uv-e.xz);\n\t\trv += vec2(0.0, 10.0)*$in(uv+e.zx);\n\t\trv += vec2(0.0, -10.0)*$in(uv-e.zx);\n\t\trv *= size*amount/512.0;\n\t} else if ($algo == 2) {\n\t\trv = vec2(2.0, 0.0)*$in(uv+e.xz);\n\t\trv += vec2(-2.0, 0.0)*$in(uv-e.xz);\n\t\trv += vec2(0.0, 2.0)*$in(uv+e.zx);\n\t\trv += vec2(0.0, -2.0)*$in(uv-e.zx);\n\t\trv *= size*amount/64.0;\n\t} else {\n\t\trv = vec2(1.0, 0.0)*$in(uv+e.xz);\n\t\trv += vec2(0.0, 1.0)*$in(uv+e.zx);\n\t\trv += vec2(-1.0, -1.0)*$in(uv);\n\t\trv *= size*amount/20.0;\n\t}\n\treturn vec3(0.5)+0.5*normalize(vec3(rv, -1.0));\n}\n",
+						"name": "Normal map",
+						"outputs": [
+							{
+								"rgb": "nm_$name($uv, $amount, $size)",
+								"type": "rgb"
+							}
+						],
+						"parameters": [
+							{
+								"default": 3,
+								"label": "",
+								"name": "algo",
+								"type": "enum",
+								"values": [
+									{
+										"name": "Sobel",
+										"value": "0"
+									},
+									{
+										"name": "Scharr",
+										"value": "1"
+									},
+									{
+										"name": "Simple",
+										"value": "2"
+									},
+									{
+										"name": "Cheap",
+										"value": "3"
+									}
+								]
+							},
+							{
+								"default": 9,
+								"first": 4,
+								"label": "",
+								"last": 12,
+								"name": "size",
+								"type": "size"
+							},
+							{
+								"control": "None",
+								"default": 0.5,
+								"label": "",
+								"max": 2,
+								"min": 0,
+								"name": "amount",
+								"step": 0.01,
+								"type": "float"
+							}
+						]
+					},
+					"type": "shader"
+				},
+				{
+					"name": "pack_2x32_to_4x16_3",
+					"node_position": {
+						"x": -695.7901,
+						"y": -104.091614
+					},
+					"parameters": {
+
+					},
+					"seed_int": 0,
+					"type": "pack_1x32_to_2x16"
+				},
+				{
+					"name": "pack_4x16_to_2x32_3",
+					"node_position": {
+						"x": -698.7901,
+						"y": 46.908386
+					},
+					"parameters": {
+
+					},
+					"seed_int": 0,
+					"type": "pack_2x16_to_1x32"
+				}
+			],
+			"parameters": {
+				"buffer": 1,
+				"param2": 0,
+				"size": 7,
+				"strength": 0.43
+			},
+			"seed_int": 0,
+			"shortdesc": "Normal map",
+			"type": "graph"
+		}
+	],
+	"parameters": {
+
+	},
+	"seed_int": 0,
+	"shortdesc": "",
+	"type": "graph"
+}

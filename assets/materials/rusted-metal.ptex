@@ -1,0 +1,251 @@
+{
+	"connections": [
+		{
+			"from": "image",
+			"from_port": 0,
+			"to": "blend2",
+			"to_port": 0
+		},
+		{
+			"from": "image_2",
+			"from_port": 0,
+			"to": "brightness_contrast",
+			"to_port": 0
+		},
+		{
+			"from": "brightness_contrast",
+			"from_port": 0,
+			"to": "blend2",
+			"to_port": 1
+		},
+		{
+			"from": "blend2",
+			"from_port": 0,
+			"to": "normal_map2",
+			"to_port": 0
+		},
+		{
+			"from": "image_3",
+			"from_port": 0,
+			"to": "blend2_2",
+			"to_port": 0
+		},
+		{
+			"from": "blend2",
+			"from_port": 0,
+			"to": "blend2_2",
+			"to_port": 1
+		},
+		{
+			"from": "fbm2",
+			"from_port": 0,
+			"to": "colorize",
+			"to_port": 0
+		},
+		{
+			"from": "colorize",
+			"from_port": 0,
+			"to": "blend2_2",
+			"to_port": 2
+		},
+		{
+			"from": "blend2_2",
+			"from_port": 0,
+			"to": "Material",
+			"to_port": 0
+		}
+	],
+	"label": "Graph",
+	"longdesc": "",
+	"name": "@@4477",
+	"node_position": {
+		"x": 0,
+		"y": 0
+	},
+	"nodes": [
+		{
+			"export_last_target": "Godot/Godot 4 Standard",
+			"export_paths": {
+				"Godot/Godot 4 Standard": "/home/codevogel/mystery/assets/materials/rusted-metal"
+			},
+			"name": "Material",
+			"node_position": {
+				"x": 609,
+				"y": 35
+			},
+			"parameters": {
+				"albedo_color": {
+					"a": 1,
+					"b": 1,
+					"g": 1,
+					"r": 1,
+					"type": "Color"
+				},
+				"ao": 1,
+				"depth_scale": 0.5,
+				"emission_energy": 1,
+				"flags_transparent": true,
+				"metallic": 1,
+				"normal": 1,
+				"roughness": 0.82,
+				"size": 11,
+				"sss": 1
+			},
+			"seed_int": 0,
+			"type": "material"
+		},
+		{
+			"name": "image",
+			"node_position": {
+				"x": -560.5,
+				"y": -55
+			},
+			"parameters": {
+				"clamp": false,
+				"fix_ar": false,
+				"image": "/home/codevogel/mystery/assets/thirdparty/p0ss/metal/metall003-new-tileable.png"
+			},
+			"seed_int": 0,
+			"type": "image"
+		},
+		{
+			"name": "image_2",
+			"node_position": {
+				"x": -518.5,
+				"y": 171
+			},
+			"parameters": {
+				"clamp": false,
+				"fix_ar": false,
+				"image": "/home/codevogel/mystery/assets/thirdparty/screaming-brain-studios/Metal/Metal_11-128x128.png"
+			},
+			"seed_int": 0,
+			"type": "image"
+		},
+		{
+			"generic_size": 1,
+			"name": "blend2",
+			"node_position": {
+				"x": -139.311523,
+				"y": 73.518494
+			},
+			"parameters": {
+				"amount1": 0.21,
+				"blend_type1": 0
+			},
+			"seed_int": 0,
+			"type": "blend2"
+		},
+		{
+			"name": "brightness_contrast",
+			"node_position": {
+				"x": -239.311523,
+				"y": 303.518494
+			},
+			"parameters": {
+				"brightness": -0.34,
+				"contrast": 0.99
+			},
+			"seed_int": 0,
+			"type": "brightness_contrast"
+		},
+		{
+			"name": "normal_map2",
+			"node_position": {
+				"x": 153.76416,
+				"y": 193.784546
+			},
+			"parameters": {
+				"buffer": 1,
+				"param2": 0,
+				"size": 7,
+				"strength": 2.96
+			},
+			"seed_int": 0,
+			"type": "normal_map2"
+		},
+		{
+			"name": "image_3",
+			"node_position": {
+				"x": -427.23584,
+				"y": -301.215454
+			},
+			"parameters": {
+				"clamp": false,
+				"fix_ar": false,
+				"image": "/home/codevogel/mystery/assets/thirdparty/screaming-brain-studios/Metal/Metal_18-128x128.png"
+			},
+			"seed_int": 0,
+			"type": "image"
+		},
+		{
+			"generic_size": 1,
+			"name": "blend2_2",
+			"node_position": {
+				"x": 290.76416,
+				"y": -61.215454
+			},
+			"parameters": {
+				"amount1": 1.1,
+				"blend_type1": 0
+			},
+			"seed_int": 0,
+			"type": "blend2"
+		},
+		{
+			"name": "fbm2",
+			"node_position": {
+				"x": -264.23584,
+				"y": -145.215454
+			},
+			"parameters": {
+				"folds": 0,
+				"iterations": 5,
+				"noise": 0,
+				"offset": 0.07,
+				"persistence": 0.69,
+				"scale_x": 2,
+				"scale_y": 2
+			},
+			"seed_int": 0,
+			"type": "fbm2"
+		},
+		{
+			"name": "colorize",
+			"node_position": {
+				"x": 124.76416,
+				"y": -233.215454
+			},
+			"parameters": {
+				"gradient": {
+					"interpolation": 1,
+					"points": [
+						{
+							"a": 1,
+							"b": 0,
+							"g": 0,
+							"pos": 0,
+							"r": 0
+						},
+						{
+							"a": 1,
+							"b": 1,
+							"g": 1,
+							"pos": 0.454545,
+							"r": 1
+						}
+					],
+					"type": "Gradient"
+				}
+			},
+			"seed_int": 0,
+			"type": "colorize"
+		}
+	],
+	"parameters": {
+
+	},
+	"seed_int": 0,
+	"shortdesc": "",
+	"type": "graph"
+}
